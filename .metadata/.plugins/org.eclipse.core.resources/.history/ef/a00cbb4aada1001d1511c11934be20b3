@@ -1,0 +1,62 @@
+
+public class Receipt {
+	private Store store;
+	private int numItems;
+	private double total;
+	private String receiptID;
+	
+
+	public Receipt(Store store, int numItems, double total, String receiptID) {
+		this.store = store;
+		this.numItems = numItems;
+		this.total = total;
+		this.receiptID = receiptID;
+	}
+
+	public Receipt(Store store, double total, String receiptID) {
+		this.store = store;
+		this.numItems = 1;
+		this.total = total;
+		this.receiptID = receiptID;
+	}
+
+	public Store getStore() {
+		return store;
+	}
+
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+
+
+	public int getNumberOfItems() {
+		return numItems;
+	}
+
+
+	public void setNumItems(int numItems) {
+		this.numItems = numItems;
+	}
+
+
+	public double getTotal() {
+		return total;
+	}
+
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+
+	public String getReceiptID() {
+		return receiptID;
+	}
+
+
+	public void setReceiptID(String receiptID) {
+		this.receiptID = receiptID;
+	}
+
+}

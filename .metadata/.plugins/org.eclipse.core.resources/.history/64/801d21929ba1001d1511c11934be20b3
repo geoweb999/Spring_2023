@@ -1,0 +1,37 @@
+
+public class Location {
+	
+	private float latitude;
+	private float longitude;
+	private float altitudeAGL;
+	private String terrainType;
+	
+	
+	
+	public float getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
+	}
+	public float getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(float longitude) {
+		this.longitude = longitude;
+	}
+	public float getAltitudeAGL() {
+		return altitudeAGL;
+	}
+	public void setAltitudeAGL(float altitudeAGL) {
+		altitudeAGL = (altitudeAGL < 0) ? 0 : altitudeAGL;
+		this.altitudeAGL = altitudeAGL;
+	}
+	public String getTerrainType() {
+		return terrainType;
+	}
+	public void setTerrainType(String terrainType) {
+		this.terrainType = terrainType;
+	}
+
+}

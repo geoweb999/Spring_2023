@@ -1,0 +1,34 @@
+public class Seaplane extends FixedWing {
+
+	public Seaplane() {
+		super();
+	}
+
+	public Seaplane(int numEngines) {
+		super(numEngines);
+	}
+
+	public void executeLanding() {
+		// check for landing permission and execute landing procedure
+		if (this.requestLanding() && this.getTerrainType() == "LAND") {
+			this.setAirSpeed(0);
+			this.setThrottlePercent(0);
+			this.setVerticalSpeed(0);
+			this.setAirborne(false);
+		} else {
+			System.out.println("Landing request denied.");
+		}
+	}
+	
+	public void executeTakeoff() {
+		if (this.requestTakeoff() && this.getTerrainType() == "LAND") {
+			this.setAirSpeed(100);
+			this.setThrottlePercent(100);
+			this.setVerticalSpeed(1);
+			this.setAirborne(true);
+		} else {
+			System.out.println("Takeoff request denied.");
+		}
+	}
+	
+}

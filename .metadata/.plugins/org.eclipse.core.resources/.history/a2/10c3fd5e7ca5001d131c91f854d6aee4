@@ -1,0 +1,12 @@
+package foo;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        
+    	ArrayList wordList = new ArrayList();
+    	wordList.add("hello");
+    	wordList.add(4);
+    }
+}

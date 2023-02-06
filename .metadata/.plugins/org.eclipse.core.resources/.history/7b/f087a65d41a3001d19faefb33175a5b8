@@ -1,0 +1,49 @@
+public class Seaplane extends FixedWing {
+
+	public static final int DEFAULT_NUMBER_ENGINES = 1;
+	
+	public Seaplane(String registrationID, Location location, int soulsOnBoard, int numEngines) {
+		super(registrationID, location, soulsOnBoard, numEngines);
+	}
+
+	public Seaplane(String registrationID, Location location, int soulsOnBoard) {
+		super(registrationID, location, soulsOnBoard, DEFAULT_NUMBER_ENGINES);
+	}
+	
+	
+	@Override
+	public boolean requestLanding() {
+		return (this.getTerrainType() == super.SEA_TYPE);
+	}
+	
+	
+	@Override
+	public boolean requestTakeoff() {
+		return (this.getTerrainType() == super.SEA_TYPE);
+	}
+
+	@Override
+	public boolean executeLanding() {
+		// TO DO: additional landing checklist items for seaplanes
+		return super.executeLanding();
+	}
+	
+	@Override
+	public boolean executeTakeoff() {
+		//TO DO: additional takeoff checklist for seaplanes
+		return super.executeTakeoff();
+	}
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TO DO: this implementation reflects reality but could add location check here
+		if(obj instanceof Seaplane) {
+			return super.equals(obj);
+			
+		} else {
+			return false;
+		}
+		
+	}
+}

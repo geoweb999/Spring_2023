@@ -1,0 +1,45 @@
+public class M1Driver {
+	
+	public static final String LAND_TYPE = "LAND";
+	public static final String SEA_TYPE = "SEA";
+	public static final String MOUNTAIN_TYPE = "MOUNTAIN";
+	public static final int TWIN_ENGINE = 2;
+
+	
+	public static void main(String[] args) {
+		Location[] locations = new Location[5];
+		locations[0] = new Location(37.0, 37.0, 0, LAND_TYPE);
+		locations[1] = new Location(137.0, -37.0, 0, LAND_TYPE);
+		locations[2] = new Location(7.0, 67.0, 0, LAND_TYPE);
+		locations[3] = new Location(-60.0, -105.0, 0, SEA_TYPE);
+		locations[4] = new Location(80, -7.0, 0, MOUNTAIN_TYPE);
+		
+		Aircraft[] aircraft = new Aircraft[5];
+		aircraft[0] = new FixedWing("N1257X", locations[0],1);
+		aircraft[1] = new FixedWing("N7526J", locations[1],2);
+		aircraft[2] = new FixedWing("N999OT", locations[2],105, TWIN_ENGINE);
+		aircraft[3] = new Seaplane("N2762S", locations[3],12);
+		aircraft[4] = new Rotary("N11WTF", locations[4],6);
+		
+		for (int i= 0; i < 5; i++) {
+			System.out.println(aircraft[i]);
+		}
+		System.out.println();
+		
+		for (int i= 0; i < 5; i++) {
+			aircraft[i].executeTakeoff();
+			aircraft[i].setAltitude(1000);
+			System.out.println(aircraft[i]);
+		}
+		System.out.println();
+		
+		aircraft[1].setLocation(locations[4]);
+		System.out.println("\nRequesting landing, expect denied.");
+		if (aircraft[1].requestLanding()) {
+			aircraft[1].executeLanding();
+			aircraft[1].setAltitude(0);
+		}
+		System.out.println(aircraft[1]);
+	}
+
+}

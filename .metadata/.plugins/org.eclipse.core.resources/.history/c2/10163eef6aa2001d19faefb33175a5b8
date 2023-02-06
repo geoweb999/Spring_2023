@@ -1,0 +1,36 @@
+
+public abstract class HeavierThanAir extends Aircraft {
+	
+
+	private int numEngines;
+	private int throttlePercent;
+
+	public HeavierThanAir() {
+		super();
+		this.numEngines = 1;
+		this.throttlePercent = 0;
+	}
+	
+	public HeavierThanAir(int numEngines) {
+		super();
+		this.numEngines = numEngines;
+		this.throttlePercent = 0;
+	}
+
+	public int getNumEngines() {
+		return numEngines;
+	}
+
+	public void setNumEngines(int numEngines) {
+		this.numEngines = numEngines;
+	}
+
+	public int getThrottlePercent() {
+		return throttlePercent;
+	}
+
+	public void setThrottlePercent(int throttlePercent) {
+		this.throttlePercent = throttlePercent;
+	}
+	
+}

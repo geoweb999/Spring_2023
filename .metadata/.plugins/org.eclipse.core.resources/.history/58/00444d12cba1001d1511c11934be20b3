@@ -1,0 +1,46 @@
+public class DigitalReceipt extends Receipt {
+	private String email;
+
+	public DigitalReceipt(Store store, int numItems, double total, String receiptID, String email) {
+		super(store, numItems, total, receiptID);
+		this.email = email;
+
+	}
+	
+	public DigitalReceipt(Store store, int numItems, double total, String receiptID) {
+		super(store, numItems, total, receiptID);
+		this.email = "";
+
+	}
+
+	public DigitalReceipt(Store store, double total, String receiptID) {
+		super(store, total, receiptID);
+		this.email = "";
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public static boolean validateEmail(String email) {
+		int idx = email.indexOf('@');
+		if (idx <= 0 || idx >= email.length() - 5) { 
+			return false;	// if @ is not found, or @ at beginning or @ too close to end (no room for .XXX)
+		}
+		
+		String name = email.substring(0, idx);     // we know that '@' is not the first character
+		String domain = email.substring(idx + 1);  // we know that '@' is not the last character (see above)
+		System.out.println("Name = " + name);
+		System.out.println("Domain = " + domain);
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return super.toString() + "\n\tDigital copy sent to: " + this.email;
+	}
+}

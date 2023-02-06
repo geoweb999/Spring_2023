@@ -1,0 +1,13 @@
+
+public class FixedWing extends HeavierThanAir {
+
+	public FixedWing() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public FixedWing(int numEngines) {
+		super(numEngines);
+		// TODO Auto-generated constructor stub
+	}
+
+}

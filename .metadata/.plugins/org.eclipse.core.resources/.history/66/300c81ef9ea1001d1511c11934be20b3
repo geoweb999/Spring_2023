@@ -1,0 +1,13 @@
+
+public class Rotary extends HeavierThanAir {
+
+	public Rotary() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Rotary(int numEngines) {
+		super(numEngines);
+		// TODO Auto-generated constructor stub
+	}
+
+}

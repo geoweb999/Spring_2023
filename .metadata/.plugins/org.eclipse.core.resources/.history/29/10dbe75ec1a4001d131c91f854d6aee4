@@ -1,0 +1,17 @@
+
+public class Perishable extends Product {
+	private int shelfLife;
+	  
+	public Perishable(int id, String name, double price, int stock, String description, int shelfLife) {
+		super(id, name, price, stock, description);
+	    this.shelfLife = shelfLife;
+	}
+	  
+	public int getShelfLife() {
+	    return shelfLife;
+	}
+	  
+	public String toString() {
+		return super.toString() + "\nShelf Life: " + shelfLife + " days";
+	}
+}

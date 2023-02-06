@@ -1,0 +1,14 @@
+
+public class DigitalReceipt extends Receipt {
+
+	public DigitalReceipt(Store store, int numItems, double total, String receiptID) {
+		super(store, numItems, total, receiptID);
+		// TODO Auto-generated constructor stub
+	}
+
+	public DigitalReceipt(Store store, double total, String receiptID) {
+		super(store, total, receiptID);
+		// TODO Auto-generated constructor stub
+	}
+
+}

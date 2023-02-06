@@ -1,0 +1,4 @@
+
+public class Perishable extends Product {
+
+}

@@ -1,0 +1,17 @@
+
+public class Receipt {
+	private Store store;
+	private int numItems;
+	private double total;
+	private String receiptID;
+	
+
+	public Receipt() {
+		this.store = new Store("","");
+		this.numItems = 0;
+		this.total = 0.0;
+		this.receiptID = "";
+				
+	}
+
+}

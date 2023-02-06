@@ -1,0 +1,14 @@
+package foo;
+
+public class MyClass<GENERICTYPE> {
+
+	   private GENERICTYPE thing;
+
+	   public MyClass(GENERICTYPE thing) {
+	      this.thing= thing;
+	   }
+
+	   public T method() {
+	      return thing;
+	   }
+	}

@@ -1,0 +1,12 @@
+
+public class Seaplane extends FixedWing {
+
+	public Seaplane() {
+		super();
+	}
+
+	public Seaplane(int numEngines) {
+		super(numEngines);
+	}
+
+}

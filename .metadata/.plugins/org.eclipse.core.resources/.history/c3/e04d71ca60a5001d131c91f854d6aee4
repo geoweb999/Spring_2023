@@ -1,0 +1,15 @@
+
+public class HistoryDriver {
+		
+	public static void main(String[] args) {	
+		
+		BoxH boxH1 = new BoxH(Integer.valueOf(0));
+		boxH1.replaceContents(Integer.valueOf(1));
+		boxH1.replaceContents(Integer.valueOf(2));
+		boxH1.replaceContents(Integer.valueOf(3));
+		boxH1.replaceContents(Integer.valueOf(4));
+		
+		System.out.println(boxH1);
+
+	}
+}

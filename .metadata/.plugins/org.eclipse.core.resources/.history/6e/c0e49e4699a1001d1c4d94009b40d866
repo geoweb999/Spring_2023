@@ -1,0 +1,8 @@
+
+public abstract class Aircraft {
+
+	public Aircraft() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

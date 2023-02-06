@@ -1,0 +1,17 @@
+
+public class ProductFactory {
+	public static Product newProduct(String type, int id, String name, 
+						double price, int stock, String description) {
+		Product prod;
+		if (type.equalsIgnoreCase("PRODUCT")) {
+			prod = new Product(id, name, price, stock, description);
+		} else if (type.equalsIgnoreCase("PERISHABLE")) {
+			prod = new Perishable(id, name, price, stock, description);
+		} else if (type.equalsIgnoreCase("ELECTRONIC")) {
+			prod = new Electronic(id, name, price, stock, description);
+		} else {
+			throw new IllegalArgumentException(type + " is an invalid Product type.");
+		}
+		return prod;
+	}
+}

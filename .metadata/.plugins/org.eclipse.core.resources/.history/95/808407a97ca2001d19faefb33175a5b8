@@ -1,0 +1,21 @@
+public class M1Driver {
+	
+	public static final String LAND_TYPE = "LAND";
+	public static final String SEA_TYPE = "SEA";
+	public static final String MOUNTAIN_TYPE = "MOUNTAIN";
+	
+	public static void main(String[] args) {
+		Location[] locations = new Location[5];
+		locations[0] = new Location(37.0, 37.0, 0, LAND_TYPE);
+		locations[1] = new Location(137.0, -37.0, 0, LAND_TYPE);
+		locations[2] = new Location(7.0, 67.0, 0, LAND_TYPE);
+		locations[3] = new Location(-60.0, -105.0, 0, SEA_TYPE);
+		locations[4] = new Location(80, -7.0, 0, MOUNTAIN_TYPE);
+		
+		Aircraft[] aircraft = new Aircraft[5];
+		aircraft[0] = new FixedWing("N1257X", locations[0],1);
+		
+		System.out.println(aircraft[0]);
+	}
+
+}

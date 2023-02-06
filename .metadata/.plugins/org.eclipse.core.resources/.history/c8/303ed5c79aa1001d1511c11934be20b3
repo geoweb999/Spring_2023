@@ -1,0 +1,73 @@
+
+public abstract class Aircraft {
+
+	private float latitude;
+	private float longitude;
+	private float altitudeAGL;
+	private String terrainType;
+	private float airSpeed;
+	private int soulsOnBoard;
+	private String registrationID;
+	
+	public Aircraft() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public float getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
+	}
+
+	public float getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(float longitude) {
+		this.longitude = longitude;
+	}
+
+	public float getAltitudeAGL() {
+		return altitudeAGL;
+	}
+
+	public void setAltitudeAGL(float altitudeAGL) {
+		this.altitudeAGL = altitudeAGL;
+	}
+
+	public String getTerrainType() {
+		return terrainType;
+	}
+
+	public void setTerrainType(String terrainType) {
+		this.terrainType = terrainType;
+	}
+
+	public float getAirSpeed() {
+		return airSpeed;
+	}
+
+	public void setAirSpeed(float airSpeed) {
+		this.airSpeed = airSpeed;
+	}
+
+	public int getSoulsOnBoard() {
+		return soulsOnBoard;
+	}
+
+	public void setSoulsOnBoard(int soulsOnBoard) {
+		this.soulsOnBoard = soulsOnBoard;
+	}
+
+	public String getRegistrationID() {
+		return registrationID;
+	}
+
+	public void setRegistrationID(String registrationID) {
+		this.registrationID = registrationID;
+	}
+	
+
+}
