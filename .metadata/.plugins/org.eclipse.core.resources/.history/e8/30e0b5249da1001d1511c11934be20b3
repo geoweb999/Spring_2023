@@ -1,8 +1,0 @@
-
-public abstract class HeavierThanAir extends Aircraft {
-
-	public HeavierThanAir() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

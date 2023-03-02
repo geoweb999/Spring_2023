@@ -60,12 +60,6 @@ class Product implements Comparable<Product> {
 	}
 	
 	public int compareTo(Product prod) {
-		if (this.productName.toUpperCase().compareTo(prod.productName.toUpperCase()) < 0) {
-			return -1;
-		} else if (this.productName.toUpperCase().compareTo(prod.productName.toUpperCase()) > 0) {
-			return 1;
-		} else {
-			return 0;
-		}
+		return this.productName.toUpperCase().compareTo(prod.productName.toUpperCase()); 
 	}
 }
