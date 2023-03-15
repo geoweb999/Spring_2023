@@ -48,6 +48,7 @@ public class ArrayFrontBackCappedList<T> implements FrontBackCappedList<T>  {
 			}
 			numberOfElements--;
 			return item;
+
 		}
 	}
 

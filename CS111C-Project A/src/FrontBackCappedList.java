@@ -7,7 +7,7 @@
  * 
  * @author Jessica Masters
  */
-public interface FrontBackCappedListInterface<T> {
+public interface FrontBackCappedList<T> {
 	
 	/**
 	 * Adds a new entry to the beginning of the list if the list is not full. 

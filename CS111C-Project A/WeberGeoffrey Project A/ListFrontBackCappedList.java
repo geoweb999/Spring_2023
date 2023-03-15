@@ -4,14 +4,12 @@ import java.util.List;
 public class ListFrontBackCappedList<T> implements FrontBackCappedList<T> {
 	
 	private List<T> list; // initialize to type ArrayList<T> in the ListFrontBackCappedList constructor
-	// list[0] will be cast to int and used to track the max size of the array
-	// data in the list will be stored in list[1]...list[size-1]
-	// we will use list.sublist(1,list.size()-1) for most methods so as to manage indexes more readily
 	
 	public ListFrontBackCappedList(int size) {
 		list = new ArrayList<T>(size);
 		Object newSize = (Object) size;
 		list.add((T) newSize);
+
 	}
 
 	@Override
