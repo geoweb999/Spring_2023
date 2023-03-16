@@ -1,15 +1,16 @@
 public class LinkedFrontBackCappedList<T> implements FrontBackCappedList<T> {
 
 	private Node head, tail;
+	private int size, capacity;
    
     // head.data is cast to int and stores current size of list
 	// tail.data is cast to int and stores capacity of list
 
-	public LinkedFrontBackCappedList(int size) {
-		Object obj = (Object) size;
-		this.tail = new Node((T) obj,null);
-		obj = 0;
-		this.head = new Node((T) obj,null);
+	public LinkedFrontBackCappedList(int capacity) {
+		this.size = 0;
+		this.capacity = capacity;
+		this.head = new Node(null, null);
+		this.tail = new Node(null,null);
 	} 
 
 	@Override
@@ -21,12 +22,12 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedList<T> {
 			Node newNode = new Node(newEntry, null);
 			this.head.next = newNode;
 			this.tail.next = newNode;
-			this.incrementSize(1);
+			this.size++;
 			return true;
 		}
 		Node newNode = new Node(newEntry, head.next);
 		head.next = newNode;
-		this.incrementSize(1);
+		this.size++;
 		return true;
 	}
 
@@ -42,7 +43,7 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedList<T> {
 		Node newNode = new Node(newEntry, null);
 		tail.next.next = newNode;
 		tail.next = newNode;
-		this.incrementSize(1);
+		this.size++;
 		return true;
 	}
 
@@ -53,7 +54,7 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedList<T> {
 		}
 		T data = head.next.data;
 		this.head.next = this.head.next.next;
-		this.incrementSize(-1);
+		this.size--;
 		return data;
 	}
 
@@ -66,7 +67,7 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedList<T> {
 			T data = tail.next.data;
 			this.head.next = null;
 			this.tail.next = null;
-			this.incrementSize(-1);
+			this.size--;
 			return data;
 		}
 		T data = tail.next.data;
@@ -76,22 +77,34 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedList<T> {
 		}
 		current.next = null;
 		tail.next = current;
-		this.incrementSize(-1);
+		this.size--;
 		return data;
 	}
 
 	@Override
 	public void clear() {
-		Object size = (Object) tail.data;
-		this.tail = new Node((T) size,null);
-		size = 0;
-		this.head = new Node((T) size,null);
+		this.tail = new Node(null,null);
+		this.head = new Node(null,null);
+		this.size = 0;
+
 	}
 
 	@Override
 	public T getEntry(int givenPosition) {
-		// TODO Auto-generated method stub
-		return null;
+		if (this.isEmpty()) {
+			return null;
+		}
+		if (this.isValid(givenPosition)) {
+			int count = 0;
+			Node current = head.next;
+			while (count < givenPosition) {
+				current = current.next;
+				count++;
+			}
+			return current.data;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -141,40 +154,32 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedList<T> {
 		if (this.isEmpty()) {
 			return false;
 		}
-		int count = 0;
-		Node current = head.next;
-		while (current != null) {
-			if (current.data.equals(anEntry)) {
-				return true;
-			}
-			current = current.next;
-		}
-		return false;
+		return this.indexOf(anEntry) != -1;
 	}
 
 	@Override
 	public int size() {
-		return (int) head.data;
+		return this.size;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return head.data.equals(0);
+		return this.size == 0;
 	}
 
 	@Override
 	public boolean isFull() {
-		return head.data.equals(tail.data);
+		return this.size == this.capacity;
 	} 
 	
 	@Override 
 	public String toString() {
 		if (this.isEmpty()) {
-			return "[]" + "\tsize=" + head.data.toString() + "\tcapacity=" + tail.data.toString() + "\thead= tail =";
+			return "[]" + "\tsize=" + this.size + "\tcapacity=" + this.capacity;
 		}
 		if (this.size() == 1){
-			return "[" + this.head.next.data.toString() + "]" + "\tsize=" + head.data.toString() + 
-					"\tcapacity=" + tail.data.toString() + "\thead=" + head.next.data.toString() + " tail=" + tail.next.data.toString();
+			return "[" + this.head.next.data.toString() + "]" + "\tsize=" + this.size + 
+					"\tcapacity=" + this.capacity + "\thead=" + head.next.data.toString() + " tail=" + tail.next.data.toString();
 		}
 		Node current = head.next;	
 		String contents = "[";
@@ -183,19 +188,17 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedList<T> {
 			current = current.next;
 		}
 		contents += current.data.toString() + "]";
-		contents += "\tsize=" + head.data.toString() + "\tcapacity=" + tail.data.toString() + 
+		contents += "\tsize=" + this.size + "\tcapacity=" + this.capacity + 
 				"\thead=" + this.head.next.data.toString() + " tail=" + this.tail.next.data.toString(); 
 		return contents;
 		
 	}
 	
-	private void incrementSize(int change) {
-		int size = (int) this.head.data;
-		size += change;
-		Object obj = (Object)size;
-		this.head.data = (T)obj;
-		
+	private boolean isValid(int index) {
+		return (index >=0 && index < this.size);
 	}
+		
+	
 	public class Node {
 		public T data; 
 		public Node next; 
