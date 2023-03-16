@@ -1,17 +1,57 @@
-public class LinkedFrontBackCappedList<T> implements FrontBackCappedList<T> {
+public class LinkedFrontBackCappedList<T extends Comparable<? super T>> 
+   implements FrontBackCappedList<T>,  
+   Comparable<LinkedFrontBackCappedList<T>>{
 
+	// head points to the first node in the linked list
+	// tail points to the last node in the linked list 
+	// size is the current size of the linked list not counting head/tail
+	// capacity is the max size of the linked list not counting head/tail
 	private Node head, tail;
 	private int size, capacity;
    
-    // head.data is cast to int and stores current size of list
-	// tail.data is cast to int and stores capacity of list
 
 	public LinkedFrontBackCappedList(int capacity) {
 		this.size = 0;
 		this.capacity = capacity;
 		this.head = new Node(null, null);
-		this.tail = new Node(null,null);
+		this.tail = new Node(null, null);
 	} 
+	
+
+	@Override
+	public int compareTo(LinkedFrontBackCappedList<T> other) {
+		if (this.isEmpty() && !other.isEmpty()) {
+			return -1;
+		}
+		if (!this.isEmpty() && other.isEmpty()) {
+			return 1;
+		}
+		if (this.isEmpty() && this.isEmpty()) {
+			return 0;
+		}
+		// both lists have at least one element
+		Node thisCurrent = this.head;
+		Node otherCurrent = other.head;
+		do  {
+			thisCurrent = thisCurrent.next;
+			otherCurrent = otherCurrent.next;
+			int cmp = thisCurrent.data.compareTo(otherCurrent.data);
+			if (cmp != 0) {
+				return cmp;
+			}
+		} while (thisCurrent.next != null && otherCurrent.next != null);
+		// if we made it here then all elements checked were the same
+		if (thisCurrent.next == null && otherCurrent.next == null) {
+			return 0;
+		}
+		if (thisCurrent.next == null) {
+			return -1;
+		} else {
+			return 1;
+		}
+	}
+	
+
 
 	@Override
 	public boolean addFront(T newEntry) {
@@ -231,5 +271,6 @@ public class LinkedFrontBackCappedList<T> implements FrontBackCappedList<T> {
 
 
 	}
-	
+
+
 }
