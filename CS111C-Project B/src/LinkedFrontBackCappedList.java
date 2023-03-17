@@ -52,7 +52,6 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 	}
 	
 
-
 	@Override
 	public boolean addFront(T newEntry) {
 		if (this.isFull()) {
