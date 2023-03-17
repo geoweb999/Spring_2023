@@ -20,6 +20,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 
 	@Override
 	public int compareTo(LinkedFrontBackCappedList<T> other) {
+		// check for variations of empty lists
 		if (this.isEmpty() && !other.isEmpty()) {
 			return -1;
 		}
@@ -42,11 +43,14 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 		} while (thisCurrent.next != null && otherCurrent.next != null);
 		// if we made it here then all elements checked were the same
 		if (thisCurrent.next == null && otherCurrent.next == null) {
+			// lists were same size and had same elements
 			return 0;
 		}
 		if (thisCurrent.next == null) {
+			// this list is smaller than other list
 			return -1;
 		} else {
+			// other list is smaller than this list
 			return 1;
 		}
 	}
@@ -190,9 +194,6 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 
 	@Override
 	public boolean contains(T anEntry) {
-		if (this.isEmpty()) {
-			return false;
-		}
 		return this.indexOf(anEntry) != -1;
 	}
 
