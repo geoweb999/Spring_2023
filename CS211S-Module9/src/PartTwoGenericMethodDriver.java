@@ -13,7 +13,7 @@ public class PartTwoGenericMethodDriver {
 	// generic method header (with at least an empty method body).
 
 	public static <T> List<T> selectUniqueWinners(RandomDrawing<T> drawingList, int numWinners) {
-		List<T> winnersList = new ArrayList<>();
+		Set<T> winnersList = new HashSet<T>();
 		if (numWinners > drawingList.size()) {
 			numWinners = drawingList.size();
 		}
@@ -32,8 +32,8 @@ public class PartTwoGenericMethodDriver {
 				}
 			}
 		}
-		
-		return winnersList;
+		List<T> winners = new ArrayList<T>(winnersList);
+		return winners;
 	}
 
 	public static void main(String[] args) {
