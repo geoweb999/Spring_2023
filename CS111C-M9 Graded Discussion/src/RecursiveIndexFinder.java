@@ -38,7 +38,7 @@ public class RecursiveIndexFinder {
         Integer[] array = {1, 2, 3, 3, 4, 4, 4, 5, 5};
 
         // Search for the number 4 and print the resulting list of indices
-        ArrayList<Integer> indices = RecursiveIndexFinder.findIndicesRecursiveSorted(array, 3);
+        ArrayList<Integer> indices = RecursiveIndexFinder.findIndicesRecursiveSorted(array, 4);
         System.out.println("Indices where 4 appears: " + indices);
     }
 }
