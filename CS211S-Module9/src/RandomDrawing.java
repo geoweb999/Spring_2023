@@ -60,7 +60,7 @@ public class RandomDrawing<T> implements RandomDrawingInterface<T> {
 	}
 	
 	public void displayEntries() {
-		System.out.println("Drawing List allows duplictes=" + this.allowsDuplicates + ":");
+		System.out.println("Drawing List allows duplicates=" + this.allowsDuplicates + ":");
 		for (T item : this.drawingList) {
 			System.out.println("\t"+item);
 		}
