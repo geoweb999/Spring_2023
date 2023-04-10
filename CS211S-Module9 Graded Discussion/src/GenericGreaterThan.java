@@ -1,7 +1,7 @@
 
 public class GenericGreaterThan {
 	
-	public static <T extends Comparable<T>> int countGreaterThan(T[] array, T target) {
+	public static <T extends Comparable<? super T>> int countGreaterThan(T[] array, T target) {
 	
 		int count = 0;
 		for (T item : array) {

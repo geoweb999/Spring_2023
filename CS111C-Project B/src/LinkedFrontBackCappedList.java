@@ -1,6 +1,5 @@
 public class LinkedFrontBackCappedList<T extends Comparable<? super T>> 
-   implements FrontBackCappedList<T>,  
-   Comparable<LinkedFrontBackCappedList<T>>{
+   implements FrontBackCappedList<T>, Comparable<LinkedFrontBackCappedList<T>>{
 
 	// head points to the first node in the linked list
 	// tail points to the last node in the linked list 
