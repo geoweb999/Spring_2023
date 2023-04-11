@@ -1,8 +1,8 @@
 public class LinkedFrontBackCappedList<T extends Comparable<? super T>> 
    implements FrontBackCappedList<T>, Comparable<LinkedFrontBackCappedList<T>>{
 
-	// head points to the first node in the linked list
-	// tail points to the last node in the linked list 
+	// head.data is null && head.next is first node in list
+	// tail.data is null && tail.next is last node in list
 	// size is the current size of the linked list not counting head/tail
 	// capacity is the max size of the linked list not counting head/tail
 	private Node head, tail;
@@ -40,12 +40,12 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 				return cmp;
 			}
 		} while (thisCurrent.next != null && otherCurrent.next != null);
-		// if we made it here then all elements checked were the same
+		// if we made it here then all elements checked were the same (one is a subset of other)
 		if (thisCurrent.next == null && otherCurrent.next == null) {
 			// lists were same size and had same elements
 			return 0;
 		}
-		// one list is bigger than the other
+		// one list is a smaller subset of the other
 		return Integer.valueOf(this.size()).compareTo(Integer.valueOf(other.size()));
 	}
 	
