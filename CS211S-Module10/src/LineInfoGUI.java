@@ -12,8 +12,6 @@ import javafx.stage.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-//import LineInfoDisplayer.InfoType;
-
 public class LineInfoGUI extends Application {
 
     private Pane pane;
@@ -62,11 +60,8 @@ public class LineInfoGUI extends Application {
         	slopeText.setText(lineInfoDisplayer.getInfo(line));
         });
 
-        
         timeText = new Text("");
-        // SOMEWHERE IN THE CODE YOU WILL UPDATE THE TEXT OF THIS!
-        
-     
+             
         TilePane distancePane = new TilePane(distanceButton, distanceText);
         distancePane.setAlignment(Pos.CENTER);
         TilePane midpointPane = new TilePane(midpointButton, midpointText);
@@ -107,6 +102,8 @@ public class LineInfoGUI extends Application {
             
             line = new Line(startPoint.getCenterX(), startPoint.getCenterY(), endPoint.getCenterX(), endPoint.getCenterY());
             pane.getChildren().add(line);
+            
+            // update time when line is drawn
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
             timeText.setText("Line created: " + now.format(format));
