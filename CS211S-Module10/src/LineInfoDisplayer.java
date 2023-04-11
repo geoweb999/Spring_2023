@@ -71,10 +71,10 @@ public interface LineInfoDisplayer {
     		        double y2 = line.getEndY();
     		        
     		        if (x2 - x1 == 0) {
-    		        	return "Infinity";
+    		        	return "Slope: Infinity";
     		        } else {
     		        	double slope = (y2 - y1) / (x2 - x1);
-    		        	return String.format("%.2f", slope);
+    		        	return String.format("Slope: %.2f", slope);
     		        }
     			};
     		default:

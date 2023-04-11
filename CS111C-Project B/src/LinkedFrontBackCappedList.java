@@ -94,6 +94,11 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 		if (this.isEmpty()) {
 			return null;
 		}
+		if (this.size() == 1) {
+			T data = head.next.data;
+			this.clear();
+			return data;
+		}
 		T data = head.next.data;
 		this.head.next = this.head.next.next;
 		this.size--;

@@ -38,7 +38,6 @@ public class LineInfoGUI extends Application {
         	distanceText.setText(lineInfoDisplayer.getInfo(line));
         });
         
-
         midpointText = new Text("");
         midpointButton = new Button("Calculate Midpoint");
         midpointButton.setOnAction((event) -> {
@@ -54,7 +53,7 @@ public class LineInfoGUI extends Application {
         });
        
         slopeText = new Text("");
-        slopeButton = new Button("Calculate slope");
+        slopeButton = new Button("Calculate Slope");
         slopeButton.setOnAction((event) -> {
         	lineInfoDisplayer = LineInfoDisplayer.createLineInfoDisplayer(LineInfoDisplayer.InfoType.SLOPE);
         	slopeText.setText(lineInfoDisplayer.getInfo(line));
