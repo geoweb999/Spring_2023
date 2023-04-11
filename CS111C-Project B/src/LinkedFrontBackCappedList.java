@@ -45,13 +45,8 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 			// lists were same size and had same elements
 			return 0;
 		}
-		if (thisCurrent.next == null) {
-			// this list is smaller than other list
-			return -1;
-		} else {
-			// other list is smaller than this list
-			return 1;
-		}
+		// one list is bigger than the other
+		return Integer.valueOf(this.size()).compareTo(Integer.valueOf(other.size()));
 	}
 	
 
@@ -112,11 +107,10 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 		}
 		if (this.size() == 1) {
 			T data = tail.next.data;
-			this.head.next = null;
-			this.tail.next = null;
-			this.size--;
+			this.clear();
 			return data;
 		}
+		// find node previous to tail
 		T data = tail.next.data;
 		Node current = head;
 		while (current.next.next != null) {
