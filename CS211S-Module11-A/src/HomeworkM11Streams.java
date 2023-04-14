@@ -121,7 +121,7 @@ public class HomeworkM11Streams {
 		System.out.println("\nQ12 Top 9-highest-scoring scrabble words.\nExpected: \npizzazz worth 45 points"+"\npizazz worth 35 points" +"\njazzily worth 35 points" +
 				"\nquizzed worth 35 points" + "\njacuzzi worth 34 points" + "\nquizzer worth 34 points" +
 				"\nquizzes worth 34 points" + "\njazzy worth 33 points" + "\njazzing worth 33 points" +"\nActual: "); 
-		List<String> topNineWords = scrabbleWords.stream()
+		List<String> topNineWords = scrabbleWords.stream()				
 				.sorted(Comparator.comparingInt(HomeworkM11Streams::wordScore).reversed())
 				.limit(9)
 				.collect(Collectors.toList());
