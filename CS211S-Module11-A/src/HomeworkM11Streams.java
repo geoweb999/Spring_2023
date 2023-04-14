@@ -80,7 +80,6 @@ public class HomeworkM11Streams {
 				.map(Customer::getId)
 				.collect(Collectors.joining(","));
 		System.out.print("\nQ8: Any customer that has spent > 9800. \nExpected: <nothing should print>\n  Actual: ");
-		q8();
 		System.out.println(highSpendList);
 		
 		// Q9: Find the sum of the numbers represented in an String array.
@@ -121,13 +120,12 @@ public class HomeworkM11Streams {
 		System.out.println("\nQ12 Top 9-highest-scoring scrabble words.\nExpected: \npizzazz worth 45 points"+"\npizazz worth 35 points" +"\njazzily worth 35 points" +
 				"\nquizzed worth 35 points" + "\njacuzzi worth 34 points" + "\nquizzer worth 34 points" +
 				"\nquizzes worth 34 points" + "\njazzy worth 33 points" + "\njazzing worth 33 points" +"\nActual: "); 
-		List<String> topNineWords = scrabbleWords.stream()				
+		
+		scrabbleWords.stream()
 				.sorted(Comparator.comparingInt(HomeworkM11Streams::wordScore).reversed())
-				.limit(9)
-				.collect(Collectors.toList());
-		for (String word : topNineWords) {
-			System.out.println(word + " worth " + wordScore(word) + " points");
-		}
+				.limit(9)	
+				.forEach((word) -> System.out.println(word + " worth " + wordScore(word) + " points"));
+		
 	}
 	
 	public static long q1() {
