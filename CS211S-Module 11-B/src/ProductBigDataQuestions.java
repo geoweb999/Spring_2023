@@ -71,60 +71,36 @@ public class ProductBigDataQuestions {
        // This code creates a map with all chemicals added as keys with empty lists as the values.
        chemicalProductMap = new HashMap<String, List<Product>>();
        
-//       Map<Product, List<String>> productNames = productList.stream()
-//				.collect(Collectors.toMap(product -> product, product -> product.getChemicals()));
-//       
-//   
-//       Set<String> chemList = new HashSet<>();
-//       productList.stream().forEach(
-//             product -> { 
-//                 product.getChemicals().stream().
-//                     forEach(chemicalName -> 
-//                         chemList.add(chemicalName));
-//             });
-//       System.out.println(LocalDateTime.now());
-//       productList.stream().forEach(
-//               product -> { 
-//                   product.getChemicals().stream().
-//                       forEach(chemicalName -> 
-//                           chemicalProductMap.putIfAbsent(chemicalName,  
-//                        		   productList.stream()
-//                        		   .filter(prod -> prod.getChemicals().contains(chemicalName))
-//                        		   .toList()
-//                        		   
-//                        		   ));
-//               }      
-//               );
-
        // QUESTION 6: Fill the lists (the value) of the map above.
        // Hint: Use a nested stream (one stream of productList and then a separate stream for each list of each product).
-//       productList.stream().forEach(
-//               product -> { 
-//                   product.getChemicals().stream().
-//                       forEach(chemicalName -> 
-//                           chemicalProductMap.putIfAbsent(chemicalName,  new ArrayList<Product>()
-//               ));
-//               }      
-//               );
-//       
-//       chemicalProductMap.keySet().stream().forEach(
-//               chemical -> chemicalProductMap.replace(chemical, 
-//                   productList.stream()
-//                   		.filter(product -> product.getChemicals().contains(chemical)) 
-//                        .toList()    
-//               )
-//               );
-       System.out.println(LocalDateTime.now());
        productList.stream().forEach(
                product -> { 
-                   product.getChemicals().parallelStream().
+                   product.getChemicals().stream().
                        forEach(chemicalName -> 
-                           chemicalProductMap.putIfAbsent(chemicalName, productList.parallelStream().filter(product2 -> product2.getChemicals().contains(chemicalName)).toList()));
-                       
-               }
+                           chemicalProductMap.putIfAbsent(chemicalName,  new ArrayList<Product>()
+               ));
+               }      
                );
-
-       System.out.println(LocalDateTime.now());
+       
+       chemicalProductMap.keySet().stream().forEach(
+               chemical -> chemicalProductMap.replace(chemical, 
+                   productList.stream()
+                   		.filter(product -> product.getChemicals().contains(chemical)) 
+                        .toList()    
+               )
+               );
+//       System.out.println(LocalDateTime.now());
+//       productList.parallelStream().forEach(
+//               product -> { 
+//                   product.getChemicals().parallelStream().
+//                       forEach(chemicalName -> 
+//                           chemicalProductMap.putIfAbsent(chemicalName, 
+//                        		   productList.parallelStream()
+//                        		   .filter(product2 -> product2.getChemicals().contains(chemicalName)).toList()));
+//                       
+//               }
+//               );
+//       System.out.println(LocalDateTime.now());
 
        // checks that the map is correct; consider adding additional checks!
        System.out.println("\nQ6: Spot checking the map (key=chemical name, value = list of products that contain that chemical).");
@@ -135,7 +111,7 @@ public class ProductBigDataQuestions {
        // QUESTION 7: Which chemical appears in the most products?
        // Hint: use max(Comparator) again. Define your comparator to compare chemical names based on the size of the list of products.
        String mostOccurringChemical = chemicalProductMap.keySet().stream()
-    		   .max(Comparator.comparing(chemical -> chemicalProductMap.get(chemical).size()))
+    		   .max(Comparator.comparingInt(chemical -> chemicalProductMap.get(chemical).size()))
     		   .orElse("No chemical found");
     		 
     		   
