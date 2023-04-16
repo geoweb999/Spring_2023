@@ -1,8 +1,8 @@
 public class LinkedFrontBackCappedList<T extends Comparable<? super T>> 
    implements FrontBackCappedList<T>, Comparable<LinkedFrontBackCappedList<T>>{
 
-	// head.data is null && head.next is first node in list
-	// tail.data is null && tail.next is last node in list
+	// head.data is null && head.next is first node in list or null
+	// tail.data is null && tail.next is last node in list or null
 	// size is the current size of the linked list not counting head/tail
 	// capacity is the max size of the linked list not counting head/tail
 	private Node head, tail;
@@ -20,15 +20,15 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 	@Override
 	public int compareTo(LinkedFrontBackCappedList<T> other) {
 		// check for variations of empty lists
-		if (this.isEmpty() && !other.isEmpty()) {
-			return -1;
+		if ((this.isEmpty()  && !other.isEmpty()) ||
+	       (!this.isEmpty()  && other.isEmpty())) {
+			return Integer.valueOf(this.size()).compareTo(Integer.valueOf(other.size()));
 		}
-		if (!this.isEmpty() && other.isEmpty()) {
-			return 1;
-		}
+
 		if (this.isEmpty() && this.isEmpty()) {
 			return 0;
 		}
+		
 		// both lists have at least one element
 		Node thisCurrent = this.head;
 		Node otherCurrent = other.head;
@@ -74,6 +74,7 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 			return false;
 		}
 		if (this.isEmpty()) {
+			// same as adding to front so reuse code
 			this.addFront(newEntry);
 			return true;
 		}
