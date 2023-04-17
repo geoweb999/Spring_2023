@@ -4,34 +4,47 @@ public class ListDeque <T> implements DequeInterface<T> {
 	
 	protected List<T> list; // note: this is List from the Java standard library java.util package
 
-	// ANY OTHER VARIABLES AND CONSTRUCTORS GO HERE
+	public ListDeque() {
+		list = new ArrayList<T>();
+	}
 	
 	public void addToBack(T newEntry) {
-		// YOUR CODE HERE
+		list.add(newEntry);
 	}
 	public void addToFront(T newEntry) {
-		// YOUR CODE HERE
+		list.add(0, element);
 	}
 	public T removeFront() {
-		return null; // PLACEHOLDER: YOUR CODE GOES HERE
+        if (isEmpty()) {
+            throw new EmptyQueueException();
+        }
+        return list.remove(0);
 	}
 	public T removeBack() {
-		return null; // PLACEHOLDER: YOUR CODE GOES HERE
+        if (isEmpty()) {
+            throw new EmptyQueueException();
+        }
+        return list.remove(list.size() - 1);
 	}
 
 	public T getFront() {
-		return null; // PLACEHOLDER: YOUR CODE GOES HERE
+        if (isEmpty()) {
+            throw new EmptyQueueException();
+        }
+        return list.get(0);
 	}
 	public T getBack() {
-		return null; // PLACEHOLDER: YOUR CODE GOES HERE
-	}
+        if (isEmpty()) {
+            throw new EmptyQueueException();
+        }
+        return list.get(list.size() - 1);	}
 
 	public boolean isEmpty() {
-		return false; // PLACEHOLDER: YOUR CODE GOES HERE
+        return list.isEmpty();
 	}
 
 	public void clear() {
-		// YOUR CODE HERE
+        list.clear();
 	}
 	
 	/* 
