@@ -12,7 +12,7 @@ public class ListDeque <T> implements DequeInterface<T> {
 		list.add(newEntry);
 	}
 	public void addToFront(T newEntry) {
-		list.add(0, element);
+		list.add(0, newEntry);
 	}
 	public T removeFront() {
         if (isEmpty()) {
@@ -45,6 +45,18 @@ public class ListDeque <T> implements DequeInterface<T> {
 
 	public void clear() {
         list.clear();
+	}
+	
+	@Override
+	public String toString() {
+		
+		String out = "front ";
+		for (T element :  this.list) {
+			Integer el = (Integer) element;
+			out += Integer.toString(el) + " ";
+		}
+		out += "back";
+		return out;
 	}
 	
 	/* 

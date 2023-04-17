@@ -7,3 +7,4 @@ public class EmptyQueueException extends RuntimeException {
 		super(message);
 	}
 }
+
