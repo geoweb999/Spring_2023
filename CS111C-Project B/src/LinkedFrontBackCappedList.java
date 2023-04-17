@@ -19,10 +19,12 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 
 	@Override
 	public int compareTo(LinkedFrontBackCappedList<T> other) {
+		int sizeCompare = Integer.valueOf(this.size()).compareTo(Integer.valueOf(other.size()));
+
 		// check for variations of empty lists
 		if ((this.isEmpty()  && !other.isEmpty()) ||
 	       (!this.isEmpty()  && other.isEmpty())) {
-			return Integer.valueOf(this.size()).compareTo(Integer.valueOf(other.size()));
+			return sizeCompare;
 		}
 
 		if (this.isEmpty() && this.isEmpty()) {
@@ -40,13 +42,13 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 				return cmp;
 			}
 		} while (thisCurrent.next != null && otherCurrent.next != null);
-		// if we made it here then all elements checked were the same (one is a subset of other)
+		// if we made it here then all elements checked were the same (one or both is a subset of other)
 		if (thisCurrent.next == null && otherCurrent.next == null) {
 			// lists were same size and had same elements
 			return 0;
 		}
 		// one list is a smaller subset of the other
-		return Integer.valueOf(this.size()).compareTo(Integer.valueOf(other.size()));
+		return sizeCompare;
 	}
 	
 
