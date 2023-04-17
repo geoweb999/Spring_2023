@@ -103,9 +103,8 @@ public class HomeworkM11Streams {
 		// Print the first 5 of these numbers.
 		System.out.print("\nQ11: Expected: 5 random numbers that are multiples of 3 between 1-100.\n  Actual: ");
 		Random random = new Random();
-		String randomMultiple3String = Stream.generate(
-				() -> random.nextInt(100) + 1)
-				.filter(i -> i%3 == 0)
+		String randomMultiple3String = Stream.generate(() -> random.nextInt(100) + 1)
+				.filter(i -> i % 3 == 0)
 				.distinct()
 				.limit(5)
 				.sorted()
