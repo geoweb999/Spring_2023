@@ -15,42 +15,6 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 		this.head = new Node(null, null);
 		this.tail = new Node(null, null);
 	} 
-	
-
-	@Override
-	public int compareTo(LinkedFrontBackCappedList<T> other) {
-		int sizeCompare = Integer.valueOf(this.size()).compareTo(Integer.valueOf(other.size()));
-
-		// check for variations of empty lists
-		if ((this.isEmpty()  && !other.isEmpty()) ||
-	       (!this.isEmpty()  && other.isEmpty())) {
-			return sizeCompare;
-		}
-
-		if (this.isEmpty() && this.isEmpty()) {
-			return 0;
-		}
-		
-		// both lists have at least one element
-		Node thisCurrent = this.head;
-		Node otherCurrent = other.head;
-		do  {
-			thisCurrent = thisCurrent.next;
-			otherCurrent = otherCurrent.next;
-			int cmp = thisCurrent.data.compareTo(otherCurrent.data);
-			if (cmp != 0) {
-				return cmp;
-			}
-		} while (thisCurrent.next != null && otherCurrent.next != null);
-		// if we made it here then all elements checked were the same (one or both is a subset of other)
-		if (thisCurrent.next == null && otherCurrent.next == null) {
-			// lists were same size and had same elements
-			return 0;
-		}
-		// one list is a smaller subset of the other
-		return sizeCompare;
-	}
-	
 
 	@Override
 	public boolean addFront(T newEntry) {
@@ -130,7 +94,6 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 		this.tail = new Node(null,null);
 		this.head = new Node(null,null);
 		this.size = 0;
-
 	}
 
 	@Override
@@ -239,6 +202,41 @@ public class LinkedFrontBackCappedList<T extends Comparable<? super T>>
 		return (index >=0 && index < this.size);
 	}
 		
+
+	@Override
+	public int compareTo(LinkedFrontBackCappedList<T> other) {
+		int sizeCompare = Integer.valueOf(this.size()).compareTo(Integer.valueOf(other.size()));
+
+		// check for variations of empty lists
+		if ((this.isEmpty()  && !other.isEmpty()) ||
+	       (!this.isEmpty()  && other.isEmpty())) {
+			return sizeCompare;
+		}
+
+		if (this.isEmpty() && this.isEmpty()) {
+			return 0;
+		}
+		
+		// both lists have at least one element
+		Node thisCurrent = this.head;
+		Node otherCurrent = other.head;
+		do  {
+			thisCurrent = thisCurrent.next;
+			otherCurrent = otherCurrent.next;
+			int cmp = thisCurrent.data.compareTo(otherCurrent.data);
+			if (cmp != 0) {
+				return cmp;
+			}
+		} while (thisCurrent.next != null && otherCurrent.next != null);
+		// if we made it here then all elements checked were the same (one or both is a subset of other)
+		if (thisCurrent.next == null && otherCurrent.next == null) {
+			// lists were same size and had same elements
+			return 0;
+		}
+		// one list is a smaller subset of the other
+		return sizeCompare;
+	}
+	
 	
 	public class Node {
 		public T data; 
