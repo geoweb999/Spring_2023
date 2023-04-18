@@ -95,7 +95,7 @@ public class ArrayQueue<T> implements QueueInterface<T> {
    		this.getFront();  // throws error if queue is empty
    		int nextIndex = (this.frontIndex + 1) % this.queue.length;
    		if (nextIndex == ((backIndex + 1) % queue.length)) {
-   			// there is no second element in queue, throw error
+   			// there is no second element in queue, throw error (exception class exists)
 			throw new EmptySecondException();
 		} else {
 			return queue[nextIndex];
