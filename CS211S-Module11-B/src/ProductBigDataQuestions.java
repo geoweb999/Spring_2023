@@ -89,7 +89,7 @@ public class ProductBigDataQuestions {
                         .toList()    
                )
                );
-//       System.out.println(LocalDateTime.now());
+       System.out.println(LocalDateTime.now());
 //       productList.parallelStream().forEach(
 //               product -> { 
 //                   product.getChemicals().parallelStream().
@@ -100,7 +100,7 @@ public class ProductBigDataQuestions {
 //                       
 //               }
 //               );
-//       System.out.println(LocalDateTime.now());
+       System.out.println(LocalDateTime.now());
 
        // checks that the map is correct; consider adding additional checks!
        System.out.println("\nQ6: Spot checking the map (key=chemical name, value = list of products that contain that chemical).");
