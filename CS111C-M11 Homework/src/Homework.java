@@ -8,7 +8,7 @@ public class Homework {
 		PriorityQueue<String> priorityQueue = new PriorityQueue<>();
 		priorityQueue.add("priority-1, obj-C");
 		priorityQueue.add("priority-2, obj-F");
-		priorityQueue.add(priorityQueue.getFront());
+//		priorityQueue.add(priorityQueue.getFront());
 		
 		while (!priorityQueue.isEmpty()) {
 			String pair = priorityQueue.poll();
