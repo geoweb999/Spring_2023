@@ -34,7 +34,7 @@ public class ProductBigDataQuestions {
         
         // QUESTION 3: How many products have 4 or more chemicals?
         long numberProductsFourOrMore = productList.stream()
-        		.filter( (product) -> product.getNumberOfChemicals() >= 4)
+        		.filter( product -> product.getNumberOfChemicals() >= 4)
         		.count();
         		
         System.out.println("\nQ3. Number of products with 4 or more chemicals.\nExpected: 193\n  Actual: " + numberProductsFourOrMore);
@@ -89,7 +89,8 @@ public class ProductBigDataQuestions {
                         .toList()    
                )
                );
-       System.out.println(LocalDateTime.now());
+       
+//       System.out.println(LocalDateTime.now());
 //       productList.parallelStream().forEach(
 //               product -> { 
 //                   product.getChemicals().parallelStream().
@@ -100,7 +101,7 @@ public class ProductBigDataQuestions {
 //                       
 //               }
 //               );
-       System.out.println(LocalDateTime.now());
+//       System.out.println(LocalDateTime.now());
 
        // checks that the map is correct; consider adding additional checks!
        System.out.println("\nQ6: Spot checking the map (key=chemical name, value = list of products that contain that chemical).");
