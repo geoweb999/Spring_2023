@@ -22,6 +22,23 @@ import java.util.stream.Collectors;
 
 public class ThreeOneOneDriver {
 
+	public static TreeMap<String, TreeMap<String, Long>> ticketsByType (List<ThreeOneOne> recordsList) {
+		
+		TreeMap<String, TreeMap<String, Long>> neighborhoodIssueTypeCounts = recordsList.parallelStream()
+			    .collect(Collectors.groupingBy(
+			        ThreeOneOne::getNeighborhood,
+			        TreeMap::new,
+			        Collectors.groupingBy(
+			            ThreeOneOne::getType,
+			            TreeMap::new,
+			            Collectors.counting()
+			        )
+			    ));
+		
+		return neighborhoodIssueTypeCounts;
+
+		
+	}
 	public static TreeMap<String, TreeMap<String, Long>> ticketsByResponsible(List<ThreeOneOne> recordsList, String hood) {
 
 		TreeMap<String, TreeMap<String, Long>> neighborhoodResponsibleCounts = recordsList.stream()
@@ -37,8 +54,7 @@ public class ThreeOneOneDriver {
 		        )
 		    ));
 
-	
-	return neighborhoodResponsibleCounts;
+		return neighborhoodResponsibleCounts;
 
 	}
 	
@@ -158,13 +174,20 @@ public class ThreeOneOneDriver {
 		                		LocalDate dateTime = LocalDate.parse(values[1], formatter);
 				                String responsible = values[6];
 				                String category = values[7];
+				                String type;
+				                if (values.length > 8) {
+				                	type = values[8];
+				                } else {
+				                	 type = "";
+				                }
 				                
 				                // parse another chunk of data that was split by quote
 				                values = quoteValues[2].split(csvSplitByComma);         
 				                if (values.length >= 3) {
 					                String street = values[1];
 					                String neighborhood = values[3];
-					                ThreeOneOne record = new ThreeOneOne(caseID, dateTime, responsible, category, street, neighborhood);
+					                String district = values[4];
+					                ThreeOneOne record = new ThreeOneOne(caseID, dateTime, responsible, category, street, neighborhood, type, district);
 					                recordsList.add(record);
 					                count++;
 				                } else {
@@ -312,11 +335,21 @@ public class ThreeOneOneDriver {
         		
             	TreeMap<String, TreeMap<String, Long>> tixByRepsonsible = ticketsByResponsible(recordsList, hood);
             	TreeMap<String, Long> resp = tixByRepsonsible.get(hood);
+            	System.out.println("\nTickets by Responsible");
             	for (String rs : resp.keySet()) {
         			System.out.printf("%-50s had %,6d tickets.\n", rs, resp.get(rs));
 
             	}
             	
+            	TreeMap<String, TreeMap<String, Long>> tixByType = ticketsByType(recordsList);
+            	TreeMap<String, Long> byType = tixByType.get(hood);
+            	System.out.println("\nTickets by Request Type");
+               	for (String type : byType.keySet()) {
+        			System.out.printf("%-50s had %,6d tickets.\n", type, byType.get(type));
+
+            	}
+            	
+
 
         		System.out.println("The Category with the most tickets (" + maxTickets + ") is " + maxCat);
         	}

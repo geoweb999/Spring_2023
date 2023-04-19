@@ -5,18 +5,20 @@ public class ThreeOneOne implements Comparable<ThreeOneOne> {
 	
 	private Integer caseID;
 	private LocalDate dateOpened;
-	private String responsible, category, street, neighborhood;
+	private String requestType, responsible, category, street, neighborhood, policeDistrict;
 	
 	
 	
 	public ThreeOneOne(Integer caseID, LocalDate dateOpened, String responsible, String category, String street,
-			String neighborhood) {
+			String neighborhood, String requestType, String policeDistrict) {
 		this.caseID = caseID;
 		this.dateOpened = dateOpened;
 		this.responsible = responsible;
 		this.category = category;
 		this.street = street;
 		this.neighborhood = neighborhood;
+		this.requestType = requestType;
+		this.policeDistrict = policeDistrict;
 	}
 	public Integer getCaseID() {
 		return caseID;
@@ -61,6 +63,14 @@ public class ThreeOneOne implements Comparable<ThreeOneOne> {
 	
 	public DayOfWeek getDOW() {
 		return dateOpened.getDayOfWeek();
+	}
+	
+	public String getType() {
+		return this.requestType;
+	}
+	
+	public String getPoliceDistrict() {
+		return this.policeDistrict;
 	}
 	
 	@Override
