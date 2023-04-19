@@ -73,31 +73,36 @@ public class ProductBigDataQuestions {
        
        // QUESTION 6: Fill the lists (the value) of the map above.
        // Hint: Use a nested stream (one stream of productList and then a separate stream for each list of each product).
-       productList.stream().forEach(
+       System.out.println(LocalDateTime.now());
+
+       productList.parallelStream().forEach(
                product -> { 
-                   product.getChemicals().stream().
+                   product.getChemicals().parallelStream().
                        forEach(chemicalName -> 
                            chemicalProductMap.putIfAbsent(chemicalName,  new ArrayList<Product>()
                ));
                }      
                );
        
-       chemicalProductMap.keySet().stream().forEach(
+       chemicalProductMap.keySet().parallelStream().forEach(
                chemical -> chemicalProductMap.replace(chemical, 
-                   productList.stream()
+                   productList.parallelStream()
                    		.filter(product -> product.getChemicals().contains(chemical)) 
                         .toList()    
                )
                );
        
-//       System.out.println(LocalDateTime.now());
+
+       	System.out.println(LocalDateTime.now());
 //       productList.parallelStream().forEach(
 //               product -> { 
 //                   product.getChemicals().parallelStream().
 //                       forEach(chemicalName -> 
 //                           chemicalProductMap.putIfAbsent(chemicalName, 
 //                        		   productList.parallelStream()
-//                        		   .filter(product2 -> product2.getChemicals().contains(chemicalName)).toList()));
+//                        		   .filter(product2 -> productChemicalMap.get(product2).contains(chemicalName))
+//                        		   .toList()
+//                        		   ));
 //                       
 //               }
 //               );
