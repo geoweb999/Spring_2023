@@ -21,7 +21,22 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class ThreeOneOneDriver {
+	
+	public static TreeMap<String, Long> ticketsByDistrict (List<ThreeOneOne> recordsList) {
+		
+		TreeMap<String, Long> ticketsByPoliceDistrict = recordsList.parallelStream()
+			    .collect(Collectors.groupingBy(
+			        ThreeOneOne::getPoliceDistrict,
+			        TreeMap::new,
+			        Collectors.counting()
+			    ));
 
+		
+		return ticketsByPoliceDistrict;
+
+		
+	}
+	
 	public static TreeMap<String, TreeMap<String, Long>> ticketsByType (List<ThreeOneOne> recordsList) {
 		
 		TreeMap<String, TreeMap<String, Long>> neighborhoodIssueTypeCounts = recordsList.parallelStream()
@@ -39,6 +54,7 @@ public class ThreeOneOneDriver {
 
 		
 	}
+	
 	public static TreeMap<String, TreeMap<String, Long>> ticketsByResponsible(List<ThreeOneOne> recordsList, String hood) {
 
 		TreeMap<String, TreeMap<String, Long>> neighborhoodResponsibleCounts = recordsList.stream()
@@ -271,6 +287,14 @@ public class ThreeOneOneDriver {
         	System.out.printf("Month: %-9s %,6d\n", Month.of(month).toString().substring(0, 1).toUpperCase() +  Month.of(month).toString().substring(1).toLowerCase(), ticketsPerMonth.get(month));
         }
         
+    	TreeMap<String, Long> tixByDistrict =  ticketsByDistrict(recordsList);
+        System.out.println("\nOverview of 311 tickets by San Francisco Police District:");
+        for (String dist : tixByDistrict.keySet()) {
+        	if (dist.equals(dist.toUpperCase()) || dist.equals("")) {
+        		System.out.printf("'%-10s' had %,7d tickets.\n", dist, tixByDistrict.get(dist));
+        	}
+        }
+                
         // HOMEWORK M7 QUERY 2:
         // create tickets by neighborhood by day of week
         // TreeMap<Neighborhood, TreeMap<Day of Week, Count of tickets>>
