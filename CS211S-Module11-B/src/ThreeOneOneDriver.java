@@ -57,7 +57,7 @@ public class ThreeOneOneDriver {
 	
 	public static TreeMap<String, TreeMap<String, Long>> ticketsByResponsible(List<ThreeOneOne> recordsList, String hood) {
 
-		TreeMap<String, TreeMap<String, Long>> neighborhoodResponsibleCounts = recordsList.stream()
+		TreeMap<String, TreeMap<String, Long>> neighborhoodResponsibleCounts = recordsList.parallelStream()
 			.filter(three -> three.getNeighborhood().equals(hood))
 		    .collect(Collectors.groupingBy(
 		        ThreeOneOne::getNeighborhood,
