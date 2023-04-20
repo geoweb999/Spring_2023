@@ -94,6 +94,7 @@ public class ProductBigDataQuestions {
        
 
        	System.out.println(LocalDateTime.now());
+       	 // Could not get this optimized but preserving for future efforts
 //       productList.parallelStream().forEach(
 //               product -> { 
 //                   product.getChemicals().parallelStream().
