@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Predicate;
 
 public class RandomDrawingDriver {
 
@@ -7,32 +8,47 @@ public class RandomDrawingDriver {
 	public static void main(String[] args) {
 		
 		System.out.println("\n**************************TESTING STRING DRAWING: LETTERS AND SPACES ONLY**************************");
-		RandomDrawingInterface<String> stringDrawingLettersSpacesOnly = 
-				null; // YOUR CODE HERE TO INVOKE THE RandomDrawingLimited CONSTRUCTOR
+		Predicate<String> filter = RandomDrawingDriver::containsOnlyLettersSpaces;
+		RandomDrawingInterface<String> stringDrawingLettersSpacesOnly = new RandomDrawing(true, filter);
 		fillRandomStringBox(stringDrawingLettersSpacesOnly);
 		System.out.print("Eligible entries added: ");
 		stringDrawingLettersSpacesOnly.displayEntries();
 
 		System.out.println("\n**************************TESTING INTEGER DRAWING: EVEN NUMBERS ONLY**************************");
-		RandomDrawingInterface<Integer> numberDrawingEvensOnly = 
-				null; // YOUR CODE HERE TO INVOKE THE RandomDrawingLimited CONSTRUCTOR
+		Predicate<Integer> filter1 = (s -> s%2 == 0);
+		RandomDrawingInterface<Integer> numberDrawingEvensOnly = new RandomDrawing(true, filter1); 
 		fillRandomIntegerBox(numberDrawingEvensOnly, 20);
 		System.out.print("Eligible entries added: ");
 		numberDrawingEvensOnly.displayEntries();
 		
 		System.out.println("\n**************************TESTING EMPLOYEE DRAWING: ELIGIBLE EMPLOYEES ONLY**************************");
-		RandomDrawingInterface<Employee> employeeDrawingEligibleOnly = 
-				null; // YOUR CODE HERE TO INVOKE THE RandomDrawingLimited CONSTRUCTOR
+		Predicate<Employee> filter2 = Employee::isEligible;
+		RandomDrawingInterface<Employee> employeeDrawingEligibleOnly = new RandomDrawing(true, filter2);
 		fillRandomEmployeeBox(employeeDrawingEligibleOnly, 10);
 		System.out.print("Eligible entries added: ");
 		employeeDrawingEligibleOnly.displayEntries();
+		
+		// test using constructor with default filter
+		System.out.println("\n**************************TESTING EMPLOYEE DRAWING: ALL EMPLOYEES **************************");
+		RandomDrawingInterface<Employee> employeeDrawingEligible = new RandomDrawing(true);
+		fillRandomEmployeeBox(employeeDrawingEligible, 10);
+		System.out.print(" Entries added: ");
+		employeeDrawingEligible.displayEntries();
 		
 	}
 	
 
 	// YOUR BOOLEAN METHOD HERE
 	public static boolean containsOnlyLettersSpaces(String word) {
-		return false; // placeholder: put your code here
+		    if (word == null || word.isEmpty()) {
+		        return false;
+		    }
+		    for (char c : word.toCharArray()) {
+		        if (!Character.isLetter(c) && c != ' ') {
+		            return false;
+		        }
+		    }
+		    return true;
 	}
 	
 	private static List<String> names() {
