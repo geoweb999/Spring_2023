@@ -1,23 +1,34 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 
-public class RandomDrawing<T> implements RandomDrawingInterface<T> {
-	
+public class RandomDrawing<T> implements RandomDrawingInterface<T> { 	
 
 	private List<T> drawingList;
 	public boolean allowsDuplicates;
 	private int size;
-	
+	private Predicate<T> filter; 
 	
 	public RandomDrawing(boolean allowsDuplicates) {
 		List<T> newList = new ArrayList<>();
 		this.drawingList = newList;
 		size = 0;
 		this.allowsDuplicates = allowsDuplicates;
+		Predicate<T> filter = (s-> { return true;});
+		this.filter = filter;
 	}
 	
+	public RandomDrawing(boolean allowsDuplicates, Predicate<T> filter) {
+		this(allowsDuplicates);
+		this.filter = filter;
+	}
+	
+	@Override
 	public boolean addEntry(T entry) {
+		if (!filter.test(entry)) {
+				return false;
+		}
 		if (this.allowsDuplicates) {
 			if (drawingList.add(entry)) {
 				size++;
