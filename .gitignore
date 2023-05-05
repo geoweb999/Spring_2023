@@ -9,6 +9,7 @@ CS211S-Module7/.project
 *.snap
 *.snap
 *.snap
+*.DS_Store
 CS211S Module2 Discussion/.DS_Store
 CS111C-M6 Graded Discussion/.classpath
 CS111C-M6 Graded Discussion/.DS_Store
@@ -37,3 +38,18 @@ CS111C-Project B/.classpath
 CS111C-Project B/.DS_Store
 Police Data/.classpath
 Police Data/.project
+.metadata/.DS_Store
+.metadata/.plugins/.DS_Store
+CS111C-M1/.DS_Store
+CS111C-M2 Graded Discussion/.DS_Store
+CS111C-M2 Homework/.DS_Store
+CS111C-M3 Graded Discussion/.DS_Store
+CS111C-M3 Homework/.DS_Store
+CS111C-Module 9 Homework/.DS_Store
+CS211S Module2 Discussion/.DS_Store
+*.csv
+CS211S-Module1/.DS_Store
+CS211S-M2 Project/.DS_Store
+CS211S Module2 Discussion/.DS_Store
+*.class
+CS211S-Module11-B/311_Cases.csv.old
