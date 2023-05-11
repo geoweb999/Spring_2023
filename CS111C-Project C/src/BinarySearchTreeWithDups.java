@@ -57,11 +57,13 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 	// Make sure to take advantage of the sorted nature of the BST!
 	public int countIterative(T target) {
 		// YOUR CODE HERE!
-		
+		int loopTimes=0; // declare this variable for the efficiency tests
+
 		// this initial code is meant as a suggestion to get your started- use it or delete it!
 		int count = 0;
 		BinaryNode<T> currentNode = root;
 	    while (currentNode != null) {
+	    	loopTimes++;
 	        if (target.compareTo(currentNode.getData()) < 0) {
                 currentNode = currentNode.getLeftChild();
 	        } else if (target.compareTo(currentNode.getData()) > 0) {
@@ -71,6 +73,7 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 	        	currentNode = currentNode.getLeftChild();
 	        }
 	    }
+	    System.out.println(loopTimes); // print out your variable before you return
 		return count;
 	}
 
@@ -79,6 +82,8 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 	// Make sure to take advantage of the sorted nature of the BST!
 	public int countGreaterRecursive(T target) {
 		// YOUR CODE HERE! 
+		int recursionTimes = 0; // initialize the variable to 0 inside the method
+
 		if (isEmpty()) {
 			return 0;
 		}
@@ -87,10 +92,14 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 		BinaryNode<T> rootNode = root;
 				
 		count += countGreaterRecursiveHelper(target, root);
+    	System.out.println(recursionTimes); // print out your variable before you return
+
 		return count;
 	}
 	
 	private int countGreaterRecursiveHelper(T target, BinaryNode<T> currentNode) {
+//    	recursionTimes++; // increment your variable here
+
 		if (currentNode == null) {
 			return 0;
 		}
@@ -130,7 +139,10 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 		BinaryNode<T> rootNode = root;
 		Stack<BinaryNode<T>> nodeStack = new Stack<BinaryNode<T>>();
 		nodeStack.push(rootNode);
+		int loopTimes=0; // declare this variable for the efficiency tests
+
 		while (!nodeStack.isEmpty()) {
+			loopTimes++;
 			BinaryNode<T> currentNode = nodeStack.pop();
 			int compare = currentNode.getData().compareTo(target);
 			if (compare < 0) {
@@ -154,10 +166,39 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 				}
 			}
 		}
+		System.out.println(loopTimes);
 		return count;
 	}
-			
-	
+
+	private class InorderIterator implements Iterator<T> {
+        private Stack<BinaryNode<T>> nodeStack;
+        private BinaryNode<T> currentNode;
+
+        public InorderIterator() {
+            nodeStack = new Stack<>();
+            currentNode = root;
+        }
+
+        public boolean hasNext() {
+            return !nodeStack.isEmpty() || currentNode != null;
+        }
+
+        public T next() {
+            while (currentNode != null) {
+                nodeStack.push(currentNode);
+                currentNode = currentNode.getLeftChild();
+            }
+            currentNode = nodeStack.pop();
+            T result = currentNode.getData();
+            currentNode = currentNode.getRightChild();
+            return result;
+        }
+    }
+
+    public Iterator<T> getInorderIterator() {
+        return new InorderIterator();
+    }
+
 	// For full credit, the method should be O(n).
 	// You are allowed to use a helper method.
 	// The method can be iterative or recursive.
@@ -166,38 +207,19 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 		if (isEmpty()) {
 			return 0;
 		}
-		List<T> list = new ArrayList<>();
-		inOrder(list, root);
-		int count = 1;
-		for (int i = 0; i < list.size() - 1; i++) {
-			if (list.get(i).compareTo(list.get(i+1)) < 0) {
-				count++;
+		int count = 1;  // count first item
+		T previous = null;
+		Iterator<T> iterator = this.getInorderIterator();
+		while (iterator.hasNext()) {
+			T current = iterator.next();
+			if (previous != null) {
+				if (current.compareTo(previous) > 0) {
+					count++;
+				}
 			}
+		    previous = current;
 		}
 		return count;
 	}
-   private void inOrder(List<T> traversal, BinaryNode<T> root) {
-	   if (root == null) {
-		   return;
-	   }
-	   inOrder(traversal, root.getLeftChild());
-	   traversal.add(root.getData());
-	   inOrder(traversal, root.getRightChild());
-   }
-	
-	public int countUniqueValuesHelper(BinaryNode<T> currentNode) {
-		int count = 0;
-		if (currentNode == null) {
-			return 0;
-		}
-		if (currentNode.getLeftChild() != null) {
-			count += countUniqueValuesHelper(currentNode.getLeftChild());
-		}
-		count++;
-		if (currentNode.getRightChild() != null) {
-			count += countUniqueValuesHelper(currentNode.getRightChild());
-		}
-		return count;
-	}
-
+   
 }
