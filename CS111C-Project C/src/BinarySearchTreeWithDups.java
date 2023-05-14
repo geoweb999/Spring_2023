@@ -57,13 +57,10 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 	// Make sure to take advantage of the sorted nature of the BST!
 	public int countIterative(T target) {
 		// YOUR CODE HERE!
-		int loopTimes=0; // declare this variable for the efficiency tests
-
 		// this initial code is meant as a suggestion to get your started- use it or delete it!
 		int count = 0;
 		BinaryNode<T> currentNode = root;
 	    while (currentNode != null) {
-	    	loopTimes++;
 	        if (target.compareTo(currentNode.getData()) < 0) {
                 currentNode = currentNode.getLeftChild();
 	        } else if (target.compareTo(currentNode.getData()) > 0) {
@@ -73,7 +70,6 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 	        	currentNode = currentNode.getLeftChild();
 	        }
 	    }
-	    System.out.println(loopTimes); // print out your variable before you return
 		return count;
 	}
 
@@ -82,17 +78,13 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 	// Make sure to take advantage of the sorted nature of the BST!
 	public int countGreaterRecursive(T target) {
 		// YOUR CODE HERE! 
-		int recursionTimes = 0; // initialize the variable to 0 inside the method
 
 		if (isEmpty()) {
 			return 0;
 		}
 		// this initial code is meant as a suggestion to get your started- use it or delete it!
-		int count = 0;
 		BinaryNode<T> rootNode = root;
-				
-		count += countGreaterRecursiveHelper(target, root);
-    	System.out.println(recursionTimes); // print out your variable before you return
+		int count = countGreaterRecursiveHelper(target, root);
 
 		return count;
 	}
@@ -139,10 +131,8 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 		BinaryNode<T> rootNode = root;
 		Stack<BinaryNode<T>> nodeStack = new Stack<BinaryNode<T>>();
 		nodeStack.push(rootNode);
-		int loopTimes=0; // declare this variable for the efficiency tests
 
 		while (!nodeStack.isEmpty()) {
-			loopTimes++;
 			BinaryNode<T> currentNode = nodeStack.pop();
 			int compare = currentNode.getData().compareTo(target);
 			if (compare < 0) {
@@ -166,7 +156,6 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 				}
 			}
 		}
-		System.out.println(loopTimes);
 		return count;
 	}
 

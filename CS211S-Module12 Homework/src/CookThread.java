@@ -19,6 +19,10 @@ public class CookThread extends Thread {
     	this.numberOfCooks = numberOfCooks;
     	this.numberOfCooks.incrementAndGet();
     }
+    
+    public void printStatus(String msg) {
+    	System.out.println(cookName + msg + "\t*** Order queue: " + orderQueue.size() + " Serving Queue: " + serverQueue.size());
+    }
 
     @Override
     public void run() {
@@ -26,22 +30,27 @@ public class CookThread extends Thread {
             Food food = null;
             try {
             	food = orderQueue.take();
-                System.out.println(cookName + ": started " + food.getName() + " *** Order queue: " + orderQueue.size() + " Server queue: " + serverQueue.size());
+                printStatus(" started cooking " + food.getName());
                 Thread.sleep(1000 * food.getCookTime()); // Cook the food
-                System.out.println(cookName + ": finished " + food.getName() + " *** Order queue: " + orderQueue.size() + " Server queue: " + serverQueue.size());
+                printStatus(" finished cooking " + food.getName());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             try {
-                System.out.println(cookName + ": adding to server queue " + food.getName() + " *** Order queue: " + orderQueue.size() + " Server queue: " + serverQueue.size());
+                printStatus(" adding to server queue " + food.getName());
             	serverQueue.put(food); // will wait if queue is full
-            	System.out.println(cookName + ": added to server queue " + food.getName() + " *** Order queue: " + orderQueue.size() + " Server queue: " + serverQueue.size());
+                printStatus(" finished adding to server queue " + food.getName());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 		}
 		numberOfCooks.decrementAndGet();
-		System.out.println(cookName + " finished cooking, " + numberOfCooks.get() + " cooks left.");
+		printStatus(" finished cooking, " + numberOfCooks.get() + " cooks left.");
+        try {
+           Thread.sleep(100); // pack up and go home (fixes race condition)
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 		cooksDone.set(numberOfCooks.get() == 0);
 	}
 

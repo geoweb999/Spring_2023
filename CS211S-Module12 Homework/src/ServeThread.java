@@ -1,18 +1,24 @@
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ServeThread extends Thread {
 	
-    private BlockingQueue<Food> orderQueue;    // this Queue is present only to show the size in print statements
     private BlockingQueue<Food> serverQueue;
     private AtomicBoolean cooksDone;
     private String serverName;
+    private AtomicInteger numberOfServers;
 
-    public ServeThread(BlockingQueue<Food> orderQueue, BlockingQueue<Food> serverQueue, AtomicBoolean cooksDone, String serverName) {
-    	this.orderQueue = orderQueue;
+    public ServeThread(BlockingQueue<Food> serverQueue, AtomicBoolean cooksDone, String serverName, AtomicInteger numberOfServers) {
     	this.serverQueue = serverQueue;
     	this.cooksDone = cooksDone;
     	this.serverName = serverName;
+    	this.numberOfServers = numberOfServers;
+    	this.numberOfServers.incrementAndGet();
+    }
+    
+    public void printStatus(String msg) {
+    	System.out.println(serverName + msg + "\t*** Server queue: " + serverQueue.size());
     }
 
     @Override
@@ -23,14 +29,16 @@ public class ServeThread extends Thread {
 			while (!serverQueue.isEmpty()) {
 	            try {
 	            	Food food = serverQueue.take();
-	                System.out.println(serverName + ": started " + food.getName() + " *** Order queue: " + orderQueue.size() + " Server queue: " + serverQueue.size());
+	                printStatus(" Now serving " + food.getName());
 	                Thread.sleep(1000 * food.getServeTime()); // Cook the food
-	                System.out.println(serverName + ": finished " + food.getName() + " *** Order queue: " + orderQueue.size() + " Server queue: " + serverQueue.size());
+	                printStatus(" Finished serving " + food.getName());
 	            } catch (InterruptedException e) {
 	                e.printStackTrace();
 	            }
 	       	}
 		}
-		System.out.println(serverName + ": Finished serving");
+		numberOfServers.decrementAndGet();
+		printStatus(" DONE: " + serverName + ": Finished serving.  Number of servers left: " + numberOfServers.get());
+		
     }
 }
