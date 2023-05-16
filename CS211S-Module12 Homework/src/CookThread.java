@@ -44,14 +44,13 @@ public class CookThread extends Thread {
                 e.printStackTrace();
             }
 		}
-		numberOfCooks.decrementAndGet();
-		printStatus(" finished cooking, " + numberOfCooks.get() + " cooks left.");
-        try {
-           Thread.sleep(100); // pack up and go home (fixes race condition)
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-		cooksDone.set(numberOfCooks.get() == 0);
+		synchronized(numberOfCooks) {
+			numberOfCooks.decrementAndGet();
+			printStatus(" +++++++++++ finished cooking, " + numberOfCooks.get() + " cooks left.");
+	        synchronized(cooksDone) {
+	        	cooksDone.set(numberOfCooks.get() == 0);
+	        }
+		}
 	}
 
 }

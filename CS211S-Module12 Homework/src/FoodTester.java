@@ -6,8 +6,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class FoodTester {
 
 	public static final int SIZE_OF_SERVING_QUEUE = 3;
-	public static final int NUMBER_OF_COOK_THREADS = 1;
-	public static final int NUMBER_OF_SERVER_THREADS = 1;
+	public static final int NUMBER_OF_COOK_THREADS = 7;
+	public static final int NUMBER_OF_SERVER_THREADS = 7;
 
 	public static void main(String[] args) {
 		int iDEThreadCount = Thread.activeCount();
