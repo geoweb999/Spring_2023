@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 public class Student {
 	
@@ -30,14 +31,16 @@ public class Student {
 
 	@Override
 	public boolean equals(Object obj) {
-		// YOUR CODE HERE
-		return false;
+		if (obj instanceof Student other) {
+			return (id == other.id) && (firstName.equals(other.firstName)) && (lastName.equals(other.lastName)) && (paidFees == other.paidFees);
+		} else {
+			return false;
+		}
 	}
 	
 	@Override
 	public int hashCode() {
-		// YOUR CODE HERE
-		return 0;
+		return Objects.hash(id, firstName, lastName, paidFees);
 	}
 
 

@@ -10,17 +10,42 @@ public class VoterHashTableSeparateChaining {
 	}
 	
 	public int calculateArrayLocation(int voterID) {
-		// YOUR CODE HERE
-		return 0;
+		return voterID % tableSize;
 	}
 
 	public boolean addVoter(Voter voterToAdd) {
-		// YOUR CODE HERE
-		return false;
+		// COMPLETING EXTRA CREDIT
+		int index = calculateArrayLocation(voterToAdd.getId());
+		Node<Voter> newNode = new Node<Voter>(voterToAdd, null);
+		if (hashTable[index] == null) {
+			// no collision, just add node
+			hashTable[index] = newNode;
+			return true;
+		} else {
+			Node<Voter> current = hashTable[index];
+			if (newNode.data.getId() == current.data.getId()) {
+				return false;
+			}
+			while (current.next != null) {
+				current = current.next;
+				if (newNode.data.getId() == current.data.getId()) {
+					return false;
+				}
+			}
+			current.next = newNode;
+			return true;
+		}
 	}
 
 	public Voter getVoter(int voterID) {
-		// YOUR CODE HERE
+		int index = calculateArrayLocation(voterID);
+		Node<Voter> current = hashTable[index];
+		while (current != null) {
+			if (current.data.getId() == voterID) {
+				return current.data;
+			}
+			current = current.next;
+		}
 		return null;
 	}
 

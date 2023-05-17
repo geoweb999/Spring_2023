@@ -12,7 +12,7 @@ Which tree was built faster and had faster processing? Why do you think that is?
 Hint: Try drawing a small tree to see what is going on. Perhaps a tree built from 1, 1, 2, 2, 3, 4, 4, 5 and from 5, 4, 4, 3, 2, 2, 1.\
 \
 
-\f1\i Tree A was built in 615 sec and Tree B was built in 7529 msec so clearly Tree A was built more quickly.  The main reason for the performance difference is that Tree B is significantly higher: Tree A 4787 height vs. Tree B 39999.  In Tree B, because we default to adding duplicates down to the left, ALL nodes connect from the left side and to traverse this tree to add the next node is a O(n) operation, whereas Tree A is better balanced.   We see further evidence for this in the \'93Tree Time\'94 data where Tree A operations occur too quickly to measure and Tree B operations are slower.
+\f1\i Tree A was built in 615 msec and Tree B was built in 7529 msec so clearly Tree A was built more quickly.  The main reason for the performance difference is that Tree B is significantly higher: Tree A 4787 height vs. Tree B 39999.  In Tree B, because we default to adding duplicates down to the left, ALL nodes connect from the left side and to traverse this tree to add the next node is a O(n) operation, whereas Tree A is better balanced.   We see further evidence for this in the \'93Tree Time\'94 data where Tree A operations occur too quickly to measure and Tree B operations are slower.
 \f0\i0 \
 \
 2.  Compare the trees in Test A and Test C.\
