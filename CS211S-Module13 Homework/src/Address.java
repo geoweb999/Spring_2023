@@ -44,7 +44,8 @@ public class Address {
 	                    int length = value.length();
 
 	                    if (length < minLength || length > maxLength) {
-	                        throw new IllegalArgumentException("Invalid length for field: " + field.getName() + "expected value length between " + minLength + " & " + maxLength + " actual length " + length);
+	                        throw new IllegalArgumentException("Invalid length for field: " + field.getName() + " expected length between " + 
+	                        		minLength + " & " + maxLength + " actual length: " + length);
 	                    }
 	                } catch (IllegalAccessException e) {
 	                    e.printStackTrace();
