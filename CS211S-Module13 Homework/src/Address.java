@@ -31,28 +31,28 @@ public class Address {
 		// YOUR CODE HERE
 		 Field[] fields = this.getClass().getDeclaredFields();
 
-	        for (Field field : fields) {
-	            if (field.isAnnotationPresent(ProperLength.class)) {
-	                ProperLength annotation = field.getAnnotation(ProperLength.class);
-	                int minLength = annotation.min();
-	                int maxLength = annotation.max();
+        for (Field field : fields) {
+            if (field.isAnnotationPresent(ProperLength.class)) {
+                ProperLength annotation = field.getAnnotation(ProperLength.class);
+                int minLength = annotation.min();
+                int maxLength = annotation.max();
 
-	                field.setAccessible(true);
+                field.setAccessible(true);
 
-	                try {
-	                    String value = (String) field.get(this);
-	                    int length = value.length();
+                try {
+                    String fieldValue = (String) field.get(this);
+                    int length = fieldValue.length();
 
-	                    if (length < minLength || length > maxLength) {
-	                        throw new IllegalArgumentException("Invalid length for field: " + field.getName() + " expected length between " + 
-	                        		minLength + " & " + maxLength + " actual length: " + length);
-	                    }
-	                } catch (IllegalAccessException e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        }
-	    }
+                    if (length < minLength || length > maxLength) {
+                        throw new IllegalArgumentException("Invalid length for field '" + field.getName() + "', expected length between " + 
+                        		minLength + " & " + maxLength + " actual length: " + length);
+                    }
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 	
 	@Override
 	public String toString() {
