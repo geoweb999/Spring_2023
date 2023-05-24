@@ -1,0 +1,132 @@
+
+-----Question A-----
+---Before sorting:
+Abigail (female) born:2014-02-20 at 9.6lbs and 23.0inches; apgar=10 multiple=false
+Zoey (female) born:2003-10-06 at 8.3lbs and 18.8inches; apgar=10 multiple=false
+Anthony (male) born:2017-09-07 at 7.3lbs and 18.1inches; apgar=6 multiple=false
+Anthony (male) born:2006-02-17 at 9.9lbs and 19.7inches; apgar=10 multiple=false
+Caleb (male) born:2004-04-09 at 8.2lbs and 21.3inches; apgar=8 multiple=false
+Daniel (male) born:2010-12-30 at 9.3lbs and 21.0inches; apgar=6 multiple=false
+Riley (female) born:2013-07-01 at 9.8lbs and 22.6inches; apgar=9 multiple=false
+Theodore (male) born:2019-02-23 at 10.8lbs and 21.6inches; apgar=6 multiple=true
+Nathan (male) born:2003-11-10 at 6.2lbs and 18.4inches; apgar=9 multiple=false
+Grace (female) born:2004-12-29 at 6.7lbs and 20.5inches; apgar=10 multiple=false
+
+
+---After sorting:
+Abigail (female) born:2007-05-07 at 6.6lbs and 20.0inches; apgar=3 multiple=false
+Abigail (female) born:2014-02-20 at 9.6lbs and 23.0inches; apgar=10 multiple=false
+Aiden (male) born:2005-05-07 at 7.8lbs and 18.6inches; apgar=9 multiple=false
+Aiden (male) born:2012-07-04 at 5.6lbs and 22.4inches; apgar=10 multiple=false
+Alexander (male) born:2014-12-09 at 9.2lbs and 21.5inches; apgar=6 multiple=false
+Alexander (male) born:2004-10-31 at 7.6lbs and 18.2inches; apgar=7 multiple=false
+Alexander (male) born:2000-03-19 at 6.5lbs and 18.5inches; apgar=8 multiple=false
+Andrew (male) born:2004-10-30 at 7.7lbs and 22.1inches; apgar=7 multiple=false
+Andrew (male) born:2014-02-01 at 5.3lbs and 20.9inches; apgar=9 multiple=false
+Andrew (male) born:2009-05-20 at 9.4lbs and 19.3inches; apgar=10 multiple=false
+
+-----Question B-----
+Abigail
+Aiden
+Alexander
+Andrew
+Anthony
+Aria
+Asher
+Aubrey
+Audrey
+Aurora
+Ava
+Bella
+Benjamin
+Caleb
+Camila
+Carter
+Chloe
+Christopher
+Claire
+Daniel
+David
+Dylan
+Eleanor
+Elijah
+Elizabeth
+Ella
+Ellie
+Emily
+Emma
+Ethan
+Evelyn
+Gabriel
+Grace
+Grayson
+Hannah
+Harper
+Hazel
+Henry
+Isaac
+Isabella
+Jack
+Jacob
+James
+Jaxon
+Jayden
+Joseph
+Joshua
+Julian
+Layla
+Leah
+Leo
+Levi
+Lillian
+Lily
+Lincoln
+Logan
+Lucas
+Luke
+Luna
+Mason
+Mateo
+Matthew
+Mia
+Michael
+Mila
+Natalie
+Nathan
+Noah
+Olivia
+Owen
+Penelope
+Riley
+Ryan
+Samuel
+Savannah
+Skylar
+Sofia
+Sophia
+Stella
+Theodore
+Victoria
+Violet
+William
+Wyatt
+Zoe
+Zoey
+
+-----Question C-----
+8.232222222222221
+
+-----Question D-----
+[Alexander, Alexander, Alexander, Benjamin, Benjamin, Benjamin, Benjamin, Christopher, Christopher, Theodore, Theodore, Theodore, Theodore]
+
+-----Question E-----
+56
+
+-----Question F-----
+{3=[Abigail (female) born:2007-05-07 at 6.6lbs and 20.0inches; apgar=3 multiple=false], 4=[Samuel (male) born:2019-07-28 at 5.9lbs and 20.6inches; apgar=4 multiple=false], 5=[Camila (female) born:2012-08-26 at 5.6lbs and 20.2inches; apgar=5 multiple=false, Gabriel (male) born:2006-11-15 at 5.8lbs and 21.8inches; apgar=5 multiple=false, Jacob (male) born:2004-06-25 at 7.9lbs and 19.5inches; apgar=5 multiple=false], 6=[Alexander (male) born:2014-12-09 at 9.2lbs and 21.5inches; apgar=6 multiple=false, Anthony (male) born:2017-09-07 at 7.3lbs and 18.1inches; apgar=6 multiple=false, Asher (male) born:2018-03-14 at 7.7lbs and 18.6inches; apgar=6 multiple=false, Aurora (female) born:2018-09-17 at 11.0lbs and 22.2inches; apgar=6 multiple=true, Ava (female) born:2011-12-29 at 10.0lbs and 21.5inches; apgar=6 multiple=true, Christopher (male) born:2004-05-09 at 9.8lbs and 19.5inches; apgar=6 multiple=false, Claire (female) born:2015-05-08 at 9.1lbs and 20.1inches; apgar=6 multiple=false, Daniel (male) born:2010-12-30 at 9.3lbs and 21.0inches; apgar=6 multiple=false, Daniel (male) born:2017-01-26 at 8.7lbs and 21.1inches; apgar=6 multiple=true, David (male) born:2016-05-11 at 6.5lbs and 21.0inches; apgar=6 multiple=false, Eleanor (female) born:2018-03-27 at 7.2lbs and 18.1inches; apgar=6 multiple=false, Elijah (male) born:2013-11-14 at 6.3lbs and 21.7inches; apgar=6 multiple=false, Elizabeth (female) born:2011-11-19 at 9.2lbs and 18.2inches; apgar=6 multiple=false, Emma (female) born:2002-12-29 at 10.1lbs and 19.5inches; apgar=6 multiple=true, Gabriel (male) born:2002-02-11 at 8.1lbs and 18.9inches; apgar=6 multiple=true, Gabriel (male) born:2011-01-10 at 10.8lbs and 21.4inches; apgar=6 multiple=false, Grayson (male) born:2000-02-14 at 6.2lbs and 21.1inches; apgar=6 multiple=false, Grayson (male) born:2018-06-14 at 8.1lbs and 21.9inches; apgar=6 multiple=true, Grayson (male) born:2001-10-15 at 5.7lbs and 19.7inches; apgar=6 multiple=true, Hannah (female) born:2006-01-26 at 7.0lbs and 18.2inches; apgar=6 multiple=false, Hazel (female) born:2000-10-31 at 6.7lbs and 22.8inches; apgar=6 multiple=false, Henry (male) born:2008-01-31 at 10.6lbs and 22.1inches; apgar=6 multiple=true, Isabella (female) born:2019-12-22 at 7.1lbs and 21.7inches; apgar=6 multiple=true, Isabella (female) born:2016-09-13 at 10.6lbs and 18.6inches; apgar=6 multiple=false, Jack (male) born:2002-11-09 at 10.9lbs and 18.9inches; apgar=6 multiple=false, Jack (male) born:2001-01-23 at 6.3lbs and 20.2inches; apgar=6 multiple=false, Jack (male) born:2009-06-01 at 6.8lbs and 19.2inches; apgar=6 multiple=true, James (male) born:2013-08-29 at 6.2lbs and 22.1inches; apgar=6 multiple=false, Joshua (male) born:2011-12-03 at 5.3lbs and 18.4inches; apgar=6 multiple=false, Julian (male) born:2008-06-28 at 10.4lbs and 18.9inches; apgar=6 multiple=true, Julian (male) born:2011-01-09 at 6.2lbs and 22.4inches; apgar=6 multiple=false, Layla (female) born:2018-10-17 at 5.9lbs and 21.3inches; apgar=6 multiple=false, Levi (male) born:2005-12-18 at 8.7lbs and 18.9inches; apgar=6 multiple=false, Luke (male) born:2010-06-09 at 8.2lbs and 19.2inches; apgar=6 multiple=false, Mason (male) born:2000-07-30 at 5.5lbs and 21.0inches; apgar=6 multiple=false, Mia (female) born:2014-01-01 at 10.1lbs and 19.0inches; apgar=6 multiple=false, Mila (female) born:2009-03-28 at 9.3lbs and 22.5inches; apgar=6 multiple=false, Noah (male) born:2017-04-23 at 10.7lbs and 22.3inches; apgar=6 multiple=false, Olivia (female) born:2013-05-09 at 7.7lbs and 22.1inches; apgar=6 multiple=false, Riley (female) born:2019-12-03 at 6.0lbs and 20.6inches; apgar=6 multiple=true, Ryan (male) born:2004-01-12 at 9.1lbs and 21.9inches; apgar=6 multiple=false, Samuel (male) born:2003-05-16 at 7.5lbs and 21.4inches; apgar=6 multiple=false, Savannah (female) born:2013-09-29 at 7.4lbs and 22.9inches; apgar=6 multiple=false, Theodore (male) born:2019-02-23 at 10.8lbs and 21.6inches; apgar=6 multiple=true, Victoria (female) born:2018-02-01 at 9.6lbs and 19.0inches; apgar=6 multiple=false, Zoey (female) born:2007-07-26 at 5.8lbs and 20.2inches; apgar=6 multiple=true, Zoey (female) born:2012-01-31 at 7.7lbs and 22.9inches; apgar=6 multiple=false]}
+
+-----Question G-----
+Leo (male) born:2011-12-28 at 9.1lbs and 18.0inches; apgar=8 multiple=false
+
+-----Question H-----
+true
